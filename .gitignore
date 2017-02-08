@@ -1,6 +1,9 @@
 # binaries folder
 bin/
 
+# IDE files
+.vscode/
+
 # Compiled Object files
 *.slo
 *.lo

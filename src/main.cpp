@@ -1,3 +1,5 @@
+#include "GameController.h"
+
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <iostream>
@@ -24,15 +26,16 @@ int main(int argc, char* args[])
 
     screenSurface = SDL_GetWindowSurface(window);
     SDL_FillRect(screenSurface, NULL, SDL_MapRGB(screenSurface->format, 0xff, 0xff, 0xff));
-    SDL_UpdateWindowSurface(window);
-    SDL_Delay(1000);
     SDL_Surface* mapSurface = IMG_Load("../res/EuropeMap.png");
     if(NULL == mapSurface) {
         std::cout << "SDL Load BMP Error: " << std::string(SDL_GetError()) << std::endl;
     }
     SDL_BlitSurface(mapSurface, NULL, screenSurface, NULL);
     SDL_UpdateWindowSurface(window);
+    
+    GameController gc;
     SDL_Delay(2000);
+    // while(0 == gc.GameLoop())
 
 
     // Cleanup
