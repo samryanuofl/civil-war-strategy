@@ -1,8 +1,8 @@
-OBJS = main.cpp GameController.cpp
+OBJS = main.cpp GameController.cpp GameController.h IRenderable.h
 OBJ_NAME = ../bin/cws
-
+COMPILE_FLAGS = -std=c++14
 LINKER_FLAGS= -lSDL2 -lSDL2_image
 
 all: $(OBJS)
-	g++ $(OBJS) $(LINKER_FLAGS) -o $(OBJ_NAME)
+	g++ $(OBJS) $(COMPILE_FLAGS) $(LINKER_FLAGS) -o $(OBJ_NAME)
 

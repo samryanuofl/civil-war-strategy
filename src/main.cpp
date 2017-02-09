@@ -5,8 +5,8 @@
 #include <iostream>
 #include <string>
 
-const int SCREEN_WIDTH = 640;
-const int SCREEN_HEIGHT = 480;
+const int SCREEN_WIDTH = 1920;
+const int SCREEN_HEIGHT = 1080;
 
 
 int main(int argc, char* args[])
@@ -34,10 +34,14 @@ int main(int argc, char* args[])
     SDL_UpdateWindowSurface(window);
     
     GameController gc;
-    SDL_Delay(2000);
-    // while(0 == gc.GameLoop())
 
-
+    for(int i = 0; i < 1000000; ++i) {
+        SDL_Delay(5);
+        if(0 != gc.GameLoop()) {
+            break;
+        }
+    }
+    
     // Cleanup
     SDL_DestroyWindow(window);
     SDL_Quit();

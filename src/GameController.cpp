@@ -1,12 +1,14 @@
 #include "GameController.h"
 
 #include <iostream>
-#include <SDL2/SDL.h>
+
+
+const SDL_Keycode DEFAULT_KEY = SDL_SCANCODE_HELP;
 
 /////////////////////////////////////////////////////////////////////////////////
 // Public Functions
 /////////////////////////////////////////////////////////////////////////////////
-GameController::GameController(): mState(ST_SHOW_SPLASH)
+GameController::GameController(): state_(ST_SHOW_SPLASH)
 {
 
 }
@@ -14,15 +16,20 @@ GameController::GameController(): mState(ST_SHOW_SPLASH)
 int GameController::GameLoop()
 {
     SDL_Event e;
-    int isKeyPressed = SDL_PollEvent(&e);
+    int isEvent = SDL_PollEvent(&e);
+    SDL_Keycode key_pressed = DEFAULT_KEY;
+    if(e.type == SDL_KEYUP) {
+        key_pressed = e.key.keysym.sym;
+        key_queue_.push(e.key);
+    }
 
-    switch(mState)
+    switch(state_)
     {
         case ST_SHOW_SPLASH:
-            if(0 != isKeyPressed) {
-                if(e.type == SDL_KEYDOWN) {
-                    mState = ST_EXIT;
-                }
+            if(key_pressed != DEFAULT_KEY) {
+                std::cout << "Exiting game" << std::endl;
+                std::cout << key_pressed << std::endl;
+                state_ = ST_EXIT;
             }
         break;
         case ST_SHOW_MAIN:
