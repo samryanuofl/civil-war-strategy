@@ -5,8 +5,8 @@
 #include <iostream>
 #include <string>
 
-const int SCREEN_WIDTH = 1920;
-const int SCREEN_HEIGHT = 1080;
+const int SCREEN_WIDTH = 1024;
+const int SCREEN_HEIGHT = 768;
 
 
 int main(int argc, char* args[])
@@ -26,13 +26,13 @@ int main(int argc, char* args[])
 
     screenSurface = SDL_GetWindowSurface(window);
     SDL_FillRect(screenSurface, NULL, SDL_MapRGB(screenSurface->format, 0xff, 0xff, 0xff));
-    SDL_Surface* mapSurface = IMG_Load("../res/EuropeMap.png");
+    SDL_Surface* mapSurface = IMG_Load("./res/gsplash-lincoln-gage-skidmore.png");
     if(NULL == mapSurface) {
         std::cout << "SDL Load BMP Error: " << std::string(SDL_GetError()) << std::endl;
     }
     SDL_BlitSurface(mapSurface, NULL, screenSurface, NULL);
     SDL_UpdateWindowSurface(window);
-    
+
     GameController gc;
 
     for(int i = 0; i < 1000000; ++i) {
@@ -41,7 +41,7 @@ int main(int argc, char* args[])
             break;
         }
     }
-    
+
     // Cleanup
     SDL_DestroyWindow(window);
     SDL_Quit();
