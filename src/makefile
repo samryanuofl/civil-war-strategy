@@ -1,4 +1,4 @@
-OBJS = main.cpp GameController.cpp SpriteInfo.cpp 
+OBJS = main.cpp GameController.cpp SpriteInfo.cpp StateIntro.cpp
 HEADERS = GameController.h SpriteInfo.h IRenderable.h
 OBJ_NAME = civil-war-strategy
 BIN_FOLDER = ../bin/

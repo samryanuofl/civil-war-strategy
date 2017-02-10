@@ -26,7 +26,7 @@ int main(int argc, char* args[])
 
     screenSurface = SDL_GetWindowSurface(window);
     SDL_FillRect(screenSurface, NULL, SDL_MapRGB(screenSurface->format, 0xff, 0xff, 0xff));
-    SDL_Surface* mapSurface = IMG_Load("./res/gsplash-lincoln-gage-skidmore.png");
+    SDL_Surface* mapSurface = IMG_Load("res/splash-lincoln-gage-skidmore.png");
     if(NULL == mapSurface) {
         std::cout << "SDL Load BMP Error: " << std::string(SDL_GetError()) << std::endl;
     }

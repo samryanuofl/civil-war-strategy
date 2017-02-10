@@ -32,7 +32,9 @@ int GameController::GameLoop()
                 state_ = ST_EXIT;
             }
         break;
-        case ST_SHOW_MAIN:
+        case ST_SHOW_MAIN_MENU:
+        break;
+        case ST_MAIN_GAME:
         break;
         case ST_EXIT:
             return -1;
@@ -40,6 +42,20 @@ int GameController::GameLoop()
     }
 
     return 0;
+}
+
+void GameController::ChangeState(State& state)
+{
+
+}
+
+State* GameController::GetState()
+{
+    return NULL;
+}
+
+void GameController::Cycle()
+{
 }
 
 /////////////////////////////////////////////////////////////////////////////////
