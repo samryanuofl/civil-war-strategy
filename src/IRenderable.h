@@ -1,6 +1,7 @@
 #include "SpriteInfo.h"
 
 #include <string>
+#include <vector>
 
 class IRenderable
 {
