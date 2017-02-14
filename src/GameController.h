@@ -1,11 +1,14 @@
 #ifndef GAME_CONTROLLER_H
 #define GAME_CONTROLLER_H
 
-#include <SDL2/SDL.h>
-#include <queue>
-
 #include "StateMachine.h"
 #include "State.h"
+#include "Renderer.h"
+
+#include <SDL2/SDL.h>
+#include <queue>
+#include <vector>
+#include <memory>
 
 class GameController: public StateMachine
 {
@@ -13,13 +16,14 @@ class GameController: public StateMachine
     GameController();
     int GameLoop();
 
-    void ChangeState(State& state);
+    void AddState(std::shared_ptr<State>);
     State* GetState();
     void Cycle();
 
+    Renderer renderer_;
     private:
     enum GameState {ST_SHOW_SPLASH, ST_SHOW_MAIN_MENU, ST_MAIN_GAME, ST_EXIT};
-    GameState state_;
+    std::vector<std::shared_ptr<State>> states_;
 
     std::queue<SDL_KeyboardEvent> key_queue_;
 };

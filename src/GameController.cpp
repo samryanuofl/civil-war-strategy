@@ -1,6 +1,8 @@
 #include "GameController.h"
+#include "StateIntro.h"
 
 #include <iostream>
+#include <cstddef>
 
 
 const SDL_Keycode DEFAULT_KEY = SDL_SCANCODE_HELP;
@@ -8,9 +10,11 @@ const SDL_Keycode DEFAULT_KEY = SDL_SCANCODE_HELP;
 /////////////////////////////////////////////////////////////////////////////////
 // Public Functions
 /////////////////////////////////////////////////////////////////////////////////
-GameController::GameController(): state_(ST_SHOW_SPLASH)
+GameController::GameController()
 {
-
+    renderer_.Init(1024, 768);
+    std::shared_ptr<State> intro_state(new StateIntro(renderer_));
+    states_.push_back(intro_state);
 }
 
 int GameController::GameLoop()
@@ -23,13 +27,14 @@ int GameController::GameLoop()
         key_queue_.push(e.key);
     }
 
-    switch(state_)
+    int x = 1;
+    switch(x)
     {
         case ST_SHOW_SPLASH:
             if(key_pressed != DEFAULT_KEY) {
                 std::cout << "Exiting game" << std::endl;
                 std::cout << key_pressed << std::endl;
-                state_ = ST_EXIT;
+                return -1;
             }
         break;
         case ST_SHOW_MAIN_MENU:
@@ -44,9 +49,9 @@ int GameController::GameLoop()
     return 0;
 }
 
-void GameController::ChangeState(State& state)
+void GameController::AddState(std::shared_ptr<State> state)
 {
-
+    states_.push_back(state);
 }
 
 State* GameController::GetState()
@@ -56,6 +61,9 @@ State* GameController::GetState()
 
 void GameController::Cycle()
 {
+    for(auto& elem: states_) {
+        elem->Cycle(this);
+    }
 }
 
 /////////////////////////////////////////////////////////////////////////////////

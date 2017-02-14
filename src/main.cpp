@@ -5,33 +5,27 @@
 #include <iostream>
 #include <string>
 
+#include "Renderer.h"
+
 const int SCREEN_WIDTH = 1024;
 const int SCREEN_HEIGHT = 768;
 
+void TestRenderer()
+{
+    std::cout << "Creating renderer" << std::endl;
+    Renderer r;
+    r.Init(1024, 768);
+    SDL_Point point = {0, 0};
+    SpriteInfo si("res/splash-lincoln-gage-skidmore.png", point);
+    std::cout << "Test rendering" << std::endl;
+    r.RenderSprite(si);
+    SDL_Delay(4000);
+}
 
 int main(int argc, char* args[])
 {
-    SDL_Window* window = NULL;
-    SDL_Surface* screenSurface = NULL;
-
-    if(SDL_Init(SDL_INIT_VIDEO) < 0) {
-        std::cout << "SDL Init Error";
-        return -1;
-    }
-
-    window = SDL_CreateWindow("Civil War Strategy", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
-    if(NULL == window) {
-        std::cout << "SDL Create Window Error";
-    }
-
-    screenSurface = SDL_GetWindowSurface(window);
-    SDL_FillRect(screenSurface, NULL, SDL_MapRGB(screenSurface->format, 0xff, 0xff, 0xff));
-    SDL_Surface* mapSurface = IMG_Load("res/splash-lincoln-gage-skidmore.png");
-    if(NULL == mapSurface) {
-        std::cout << "SDL Load BMP Error: " << std::string(SDL_GetError()) << std::endl;
-    }
-    SDL_BlitSurface(mapSurface, NULL, screenSurface, NULL);
-    SDL_UpdateWindowSurface(window);
+    TestRenderer();
+    return 0;
 
     GameController gc;
 
@@ -42,9 +36,6 @@ int main(int argc, char* args[])
         }
     }
 
-    // Cleanup
-    SDL_DestroyWindow(window);
-    SDL_Quit();
 
     return 0;
 }

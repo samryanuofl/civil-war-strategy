@@ -1,8 +1,11 @@
 #include "SpriteInfo.h"
 
-SpriteInfo::SpriteInfo()
+SpriteInfo::SpriteInfo(std::string sprite_path, SDL_Point sprite_point, std::string text, SDL_Rect text_rec) :
+sprite_path_(sprite_path),
+sprite_point_(sprite_point),
+text_(text),
+text_rec_(text_rec)
 {
-    //ctor
 }
 
 SpriteInfo::~SpriteInfo()
@@ -12,22 +15,20 @@ SpriteInfo::~SpriteInfo()
 
 std::string SpriteInfo::GetText()
 {
-    return std::string();
+    return text_;
 }
 
 SDL_Rect SpriteInfo::GetTextRect()
 {
-    SDL_Rect r;
-    return r;
+    return text_rec_;
 }
 
 std::string SpriteInfo::GetSpritePath()
 {
-    return std::string();
+    return sprite_path_;
 }
 
-SDL_Rect SpriteInfo::GetSpriteRect()
+SDL_Point SpriteInfo::GetSpritePos()
 {
-    SDL_Rect r;
-    return r;
+    return sprite_point_;
 }
