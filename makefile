@@ -1,11 +1,14 @@
 CPP_FILES := $(wildcard src/*.cpp)
-OBJ_FILES := $(addprefix src/,$(notdir $(CPP_FILES:.cpp=.o)))
-LD_FLAGS := -lSDL2 -lSDL_image
-CPPFLAGS := -std=c++14
+OBJ_FILES := $(addprefix obj/,$(notdir $(CPP_FILES:.cpp=.o)))
+LD_FLAGS := -lSDL2 -lSDL2_image
+CPPFLAGS := -std=c++14 -MMD
 
-
-civil-war-strategy: $(OBJ_FILES)
-	g++ $(CPP_FLAGS) $(LD_FLAGS) -o $@ $^
+bin/Debug/civil-war-strategy: $(OBJ_FILES)
+	g++ $(CPP_FLAGS) -o $@ $^ $(LD_FLAGS)
 
 obj/%.o: src/%.cpp
-	g++ $(CPP_FLAGS) -c -o $@ $<
+	g++ $(CPPFLAGS) -c -o $@ $<
+
+clean:
+	rm obj/*.o
+-include $(OBJFILES:.o=.d)
