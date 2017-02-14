@@ -10,7 +10,7 @@ class StateMachine
     public:
         virtual void AddState(std::shared_ptr<State>) = 0;
         virtual State* GetState() = 0;
-        virtual void Cycle() = 0;
+        virtual int Cycle() = 0;
     protected:
     private:
 };

@@ -9,6 +9,7 @@ class SpriteInfo
     public:
         SpriteInfo(std::string sprite_path, SDL_Point sprite_point, std::string text = std::string(), SDL_Rect text_rec = SDL_Rect());
         virtual ~SpriteInfo();
+
         std::string GetText();
         SDL_Rect GetTextRect();
         std::string GetSpritePath();

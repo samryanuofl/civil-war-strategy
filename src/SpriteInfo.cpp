@@ -1,5 +1,6 @@
 #include "SpriteInfo.h"
 
+
 SpriteInfo::SpriteInfo(std::string sprite_path, SDL_Point sprite_point, std::string text, SDL_Rect text_rec) :
 sprite_path_(sprite_path),
 sprite_point_(sprite_point),

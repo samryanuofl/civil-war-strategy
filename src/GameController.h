@@ -14,11 +14,10 @@ class GameController: public StateMachine
 {
     public:
     GameController();
-    int GameLoop();
 
     void AddState(std::shared_ptr<State>);
     State* GetState();
-    void Cycle();
+    int Cycle();
 
     Renderer renderer_;
     private:

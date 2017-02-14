@@ -24,18 +24,12 @@ void TestRenderer()
 
 int main(int argc, char* args[])
 {
-    TestRenderer();
-    return 0;
+//    TestRenderer();
+//    return 0;
 
     GameController gc;
 
-    for(int i = 0; i < 1000000; ++i) {
-        SDL_Delay(5);
-        if(0 != gc.GameLoop()) {
-            break;
-        }
-    }
-
+    while (gc.Cycle() == 0);
 
     return 0;
 }
