@@ -5,6 +5,8 @@
 #include <iostream>
 #include <string>
 
+#include "spdlog.h"
+
 #include "Renderer.h"
 
 const int SCREEN_WIDTH = 1024;
