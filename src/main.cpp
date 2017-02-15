@@ -27,13 +27,14 @@ void TestRenderer()
 int main(int argc, char* args[])
 {
 
-    auto console = spdlog::stdout_color_mt("console");
-    console->info("Welcome to spdlog!");
-    return 0;
+    auto console = spdlog::stdout_logger_mt("spdconsole");
+    spdlog::get("spdconsole")->info("Welcome to spdlog!");
 
     GameController gc;
 
-    while (gc.Cycle() == 0);
+    while (gc.Cycle() == 0) {
+        SDL_Delay(5);
+    }
 
     return 0;
 }

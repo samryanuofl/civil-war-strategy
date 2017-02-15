@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="civil-war-strategy" />
+		<Option makefile="makefile" />
+		<Option makefile_is_custom="1" />
+		<Option execution_dir="/home/sam/dev/civil-war-strategy" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/civil-war-strategy" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="../civil-war-strategy" />
+				<Option object_output="obj/Debug/" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+					<Add directory="include" />
+				</Compiler>
+				<MakeCommands>
+					<Build command="$make -f $makefile $target" />
+					<CompileFile command="$make -f $makefile $file" />
+					<Clean command="$make -f $makefile clean$target" />
+					<DistClean command="$make -f $makefile distclean$target" />
+					<AskRebuildNeeded command="$make -q -f $makefile $target" />
+					<SilentBuild command="$make -f $makefile $target &gt; $(CMD_NULL)" />
+				</MakeCommands>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/civil-war-strategy" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add directory="include" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+		</Compiler>
+		<Unit filename="makefile" />
+		<Unit filename="src/GameController.cpp" />
+		<Unit filename="src/GameController.h" />
+		<Unit filename="src/GameState.cpp" />
+		<Unit filename="src/GameState.h" />
+		<Unit filename="src/IRenderable.h" />
+		<Unit filename="src/Renderer.cpp" />
+		<Unit filename="src/Renderer.h" />
+		<Unit filename="src/SpriteInfo.cpp" />
+		<Unit filename="src/SpriteInfo.h" />
+		<Unit filename="src/State.h" />
+		<Unit filename="src/StateIntro.cpp" />
+		<Unit filename="src/StateIntro.h" />
+		<Unit filename="src/StateMachine.h" />
+		<Unit filename="src/main.cpp" />
+		<Extensions>
+			<code_completion>
+				<search_path add="/usr/include" />
+				<search_path add="/usr/include/SDL2" />
+			</code_completion>
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

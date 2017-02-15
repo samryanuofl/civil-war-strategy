@@ -18,8 +18,7 @@ void StateIntro::Start()
 void StateIntro::Cycle(StateMachine *state_machine)
 {
     const SDL_Point sprite_point = {0, 0};
-    const std::string sprite_path("res/splash-lincoln-gage-skidmore.png");
-    SpriteInfo si(sprite_path, sprite_point);
+    SpriteInfo si(SPRITE_PATH_, SPRITE_POINT_);
     renderer_.RenderSprite(si);
 }
 

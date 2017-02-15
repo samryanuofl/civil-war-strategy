@@ -15,7 +15,6 @@ class Renderer
 
         int Init(int width, int height);
         int RenderSprite(SpriteInfo &sprite);
-        int Render(const IRenderable *renderable);
 
         int GetWindowHeight();
         int GetWindowWidth();
