@@ -26,8 +26,10 @@ void TestRenderer()
 
 int main(int argc, char* args[])
 {
-//    TestRenderer();
-//    return 0;
+
+    auto console = spdlog::stdout_color_mt("console");
+    console->info("Welcome to spdlog!");
+    return 0;
 
     GameController gc;
 
